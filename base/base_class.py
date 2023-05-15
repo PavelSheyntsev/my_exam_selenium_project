@@ -10,7 +10,7 @@ class Base:
 
     def get_current_url(self):
         get_url = self.driver.current_url
-        print(f'Current url {get_url}')
+        logger.warning(f'Current url {get_url}')
 
     """method assert word"""
 
