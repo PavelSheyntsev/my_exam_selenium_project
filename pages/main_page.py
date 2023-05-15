@@ -1,3 +1,4 @@
+from datetime import datetime
 import time
 
 from selenium.webdriver.common.by import By
@@ -10,6 +11,7 @@ from base.base_class import Base
 
 
 class MainPage(Base):
+    logger.add(f"logs/logs-{datetime.now().date()}.log")
 
     url = 'https://pitergsm.ru/'
 
