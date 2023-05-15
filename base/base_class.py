@@ -1,4 +1,5 @@
 import datetime
+from loguru import logger
 
 
 class Base:
@@ -14,9 +15,9 @@ class Base:
     """method assert word"""
 
     def assert_word(self, word, result):
-        value_word = word.text
+        value_word = word
         assert value_word == result
-        print("Good value word")
+        logger.warning("Good value word")
 
     """method make screen"""
 
@@ -30,4 +31,4 @@ class Base:
     def assert_url(self, result):
         get_url = self.driver.current_url
         assert get_url == result
-        print("Good value url")
+        logger.warning("Good value url")

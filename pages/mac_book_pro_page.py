@@ -43,6 +43,7 @@ class MacBookProPage(Base):
     XPATH_MEMORY = "//*[@id='page-side']/form/fieldset[10]/div/div/label[2]"
     XPATH_COLOR = "//*[@id='page-side']/form/fieldset[11]/div/div/label[2]"
     XPATH_TO_POUND = "//*[@id='catalog']/div/div/a"
+    XPATH_NAME_OF_POUND = "/html/body/div[1]/main/div/div[1]/div[1]/ul/li[6]/span"
 
     # getters
 
@@ -84,6 +85,11 @@ class MacBookProPage(Base):
     def get_pound(self):
         element = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.XPATH_TO_POUND)))
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        return element
+
+    def get_pound_name(self):
+        element = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.XPATH_NAME_OF_POUND))).text
+        logger.info(f'Pound name - {element}')
         return element
 
     # actions
@@ -141,5 +147,7 @@ class MacBookProPage(Base):
         self.click_processor_memory_checkbox()
         self.click_processor_color_checkbox()
         self.click_to_pound()
+
         self.assert_url("https://pitergsm.ru/catalog/tablets-and-laptops/mac/macbook-pro/macbook-pro-16-2021/13270/")
+        self.assert_word(self.get_pound_name(), 'Apple MacBook Pro 16" (M1 Pro 10C CPU, 16C GPU, 2021) 16 ГБ')
         self.get_screenshot()

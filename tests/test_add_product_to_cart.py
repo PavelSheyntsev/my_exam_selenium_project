@@ -1,8 +1,7 @@
-import time
-
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+from pages.cart_page import CartPage
 from pages.mac_book_page import MacBookPage
 from pages.mac_book_pro_page import MacBookProPage
 from pages.main_page import MainPage
@@ -23,5 +22,8 @@ def test_buy_mac_pro(set_up):
 
     pound_page = PoundPage(driver)
     pound_page.add_poud_to_cart()
+
+    price_page = CartPage(driver)
+    price_page.check_price()
 
     driver.quit()
