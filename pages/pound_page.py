@@ -53,12 +53,12 @@ class PoundPage(Base):
     def click_buy_button_1(self):
         self.highlight(self.get_buy_button_1())
         self.get_buy_button_1().click()
-        logger.info("Click RAM checkbox")
+        logger.info("Click buy checkbox")
 
     def click_buy_button_2(self):
         self.highlight(self.get_buy_button_2())
         self.get_buy_button_2().click()
-        logger.info("Click RAM checkbox")
+        logger.info("Click buy checkbox")
 
     # methods
     def add_poud_to_cart(self):
